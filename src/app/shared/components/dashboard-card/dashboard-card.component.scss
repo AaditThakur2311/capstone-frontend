@@ -1,0 +1,64 @@
+$primary-color: #1565c0;
+$accent-color: #0288d1;
+$text-color: #333333;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+mat-card {
+    width: 300px;
+    background: white;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $card-shadow;
+    }
+
+    mat-card-header {
+        background: linear-gradient(135deg, $primary-color 0%, $accent-color 100%);
+        padding: 16px;
+        color: white;
+    }
+
+    mat-card-title {
+        font-size: 1.25rem;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    mat-card-content {
+        margin: 20px 0;
+        color: $text-color;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    mat-card-actions {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        padding: 16px;
+
+        button {
+            padding: 8px 24px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+
+            &[color="primary"]:hover {
+                background-color: darken($primary-color, 10%);
+            }
+
+            &[color="accent"]:hover {
+                background-color: darken($accent-color, 10%);
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    mat-card {
+        width: 100%;
+    }
+}

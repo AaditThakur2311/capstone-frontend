@@ -1,0 +1,157 @@
+$primary-color: #1565c0;
+$accent-color: #0288d1;
+$background-color: #f5f7fa;
+$text-color: #333333;
+$error-color: #d32f2f;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+.table-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: $background-color;
+    border-radius: 8px;
+    box-shadow: $card-shadow;
+    animation: fadeIn 0.5s ease-in;
+
+    .table-title {
+        margin-bottom: 24px;
+        font-size: 28px;
+        color: $primary-color;
+        text-align: center;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .scheme-table {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+
+        mat-header-cell,
+        mat-cell {
+            padding: 16px;
+            font-size: 16px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        mat-header-cell {
+            background: linear-gradient(135deg, $primary-color 0%, $accent-color 100%);
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        mat-row {
+            transition: background-color 0.2s ease;
+
+            &:hover {
+                background-color: rgba($primary-color, 0.05);
+            }
+        }
+
+        .actions-cell {
+            text-align: center;
+            padding: 8px 16px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .action-button {
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+
+            mat-icon {
+                font-size: 24px;
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+                vertical-align: middle;
+            }
+
+            &[color="primary"] {
+                background-color: rgba($primary-color, 0.1);
+
+                &:hover:not([disabled]) {
+                    background-color: rgba($primary-color, 0.3);
+                    transform: scale(1.2);
+                }
+            }
+
+            &[color="warn"] {
+                background-color: rgba(#d32f2f, 0.1);
+
+                &:hover:not([disabled]) {
+                    background-color: rgba(#d32f2f, 0.3);
+                    transform: scale(1.2);
+                }
+            }
+
+            &[disabled] {
+                color: #b0b0b0;
+                cursor: not-allowed;
+                background-color: rgba(#b0b0b0, 0.1) !important;
+                transform: none !important;
+            }
+        }
+    }
+
+    .paginator {
+        max-width: 1200px;
+        margin: 16px auto 0;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: $card-shadow;
+        padding: 8px;
+
+        .mat-paginator-container {
+            justify-content: center;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .table-container {
+        margin-top: 12px;
+        padding: 12px;
+    }
+
+    .table-title {
+        font-size: 22px;
+    }
+
+    .scheme-table mat-header-cell,
+    .scheme-table mat-cell {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .action-button {
+        width: 40px;
+        height: 40px;
+
+        mat-icon {
+            font-size: 20px;
+        }
+    }
+
+    .paginator {
+        margin-top: 12px;
+        padding: 4px;
+    }
+}

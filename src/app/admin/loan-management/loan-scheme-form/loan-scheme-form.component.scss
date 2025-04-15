@@ -1,0 +1,133 @@
+$primary-color: #1565c0;
+$accent-color: #0288d1;
+$background-color: #f5f7fa;
+$text-color: #333333;
+$error-color: #d32f2f;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+.form-container {
+    padding: 24px;
+    background-color: $background-color;
+    border-radius: 8px;
+    box-shadow: $card-shadow;
+    animation: fadeIn 0.5s ease-in;
+
+    .form-title {
+        font-size: 24px;
+        color: $primary-color;
+        text-align: center;
+        margin-bottom: 24px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .form-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    mat-form-field {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+
+        mat-label {
+            color: $text-color;
+            font-size: 16px;
+        }
+
+        mat-select,
+        input {
+            font-size: 16px;
+        }
+
+        .mat-form-field-appearance-outline .mat-form-field-outline {
+            color: $primary-color !important;
+            transition: color 0.2s ease;
+        }
+
+        .mat-form-field-invalid .mat-form-field-outline {
+            color: $error-color !important;
+        }
+
+        mat-error {
+            font-size: 12px;
+            color: $error-color;
+            margin-top: 4px;
+        }
+
+        &:focus-within {
+            .mat-form-field-outline {
+                color: darken($primary-color, 10%) !important;
+            }
+        }
+    }
+
+    .actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        margin-top: 24px;
+
+        .cancel-button {
+            color: $text-color;
+            padding: 8px 16px;
+            border: 1px solid $text-color;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+
+            &:hover {
+                color: darken($text-color, 20%);
+                background-color: rgba($text-color, 0.1);
+            }
+        }
+
+        .submit-button {
+            min-width: 120px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+
+            &:hover:not([disabled]) {
+                background-color: darken($primary-color, 10%);
+                transform: scale(1.05);
+            }
+
+            &[disabled] {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        padding: 16px;
+    }
+
+    .form-title {
+        font-size: 20px;
+    }
+
+    mat-form-field {
+        max-width: 100%;
+    }
+
+    .actions {
+        flex-direction: column-reverse;
+        gap: 12px;
+
+        .submit-button,
+        .cancel-button {
+            width: 100%;
+        }
+    }
+}
